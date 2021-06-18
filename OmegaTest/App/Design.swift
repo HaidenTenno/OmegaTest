@@ -11,5 +11,7 @@ enum Design {
     
     enum Colors {
         static let background = UIColor.systemRed
+        static let fieldBackground = UIColor.systemBackground
+        static let fieldBorder = UIColor.systemGray6
     }
 }

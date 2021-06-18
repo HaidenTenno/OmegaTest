@@ -17,6 +17,8 @@
 		35C544FF267D15240068AFA4 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C544F8267D15240068AFA4 /* SignInViewController.swift */; };
 		35C54503267D15ED0068AFA4 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 35C54502267D15ED0068AFA4 /* SnapKit */; };
 		35C54506267D15FF0068AFA4 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 35C54505267D15FF0068AFA4 /* Alamofire */; };
+		35C54508267D1F550068AFA4 /* DateCounter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C54507267D1F550068AFA4 /* DateCounter.swift */; };
+		35C5450B267D26190068AFA4 /* UITextFieldExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C5450A267D26190068AFA4 /* UITextFieldExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +32,8 @@
 		35C544F5267D15240068AFA4 /* Design.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Design.swift; sourceTree = "<group>"; };
 		35C544F7267D15240068AFA4 /* ViewsCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewsCoordinator.swift; sourceTree = "<group>"; };
 		35C544F8267D15240068AFA4 /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
+		35C54507267D1F550068AFA4 /* DateCounter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateCounter.swift; sourceTree = "<group>"; };
+		35C5450A267D26190068AFA4 /* UITextFieldExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextFieldExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +68,7 @@
 		35C544DB267D13D10068AFA4 /* OmegaTest */ = {
 			isa = PBXGroup;
 			children = (
+				35C54509267D25FB0068AFA4 /* Extensions */,
 				35C544F1267D15240068AFA4 /* App */,
 				35C544F0267D15240068AFA4 /* Models */,
 				35C544F9267D15240068AFA4 /* Services */,
@@ -103,6 +108,7 @@
 		35C544F9267D15240068AFA4 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				35C54507267D1F550068AFA4 /* DateCounter.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -115,6 +121,14 @@
 				35C544E5267D13D30068AFA4 /* Assets.xcassets */,
 			);
 			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		35C54509267D25FB0068AFA4 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				35C5450A267D26190068AFA4 /* UITextFieldExtension.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -195,8 +209,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				35C544FD267D15240068AFA4 /* Design.swift in Sources */,
+				35C5450B267D26190068AFA4 /* UITextFieldExtension.swift in Sources */,
 				35C544FA267D15240068AFA4 /* Config.swift in Sources */,
 				35C544FE267D15240068AFA4 /* ViewsCoordinator.swift in Sources */,
+				35C54508267D1F550068AFA4 /* DateCounter.swift in Sources */,
 				35C544FF267D15240068AFA4 /* SignInViewController.swift in Sources */,
 				35C544FB267D15240068AFA4 /* AppDelegate.swift in Sources */,
 				35C544FC267D15240068AFA4 /* SceneDelegate.swift in Sources */,
