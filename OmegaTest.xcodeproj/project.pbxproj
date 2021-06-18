@@ -3,27 +3,33 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		35C544DD267D13D10068AFA4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C544DC267D13D10068AFA4 /* AppDelegate.swift */; };
-		35C544DF267D13D10068AFA4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C544DE267D13D10068AFA4 /* SceneDelegate.swift */; };
-		35C544E1267D13D10068AFA4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C544E0267D13D10068AFA4 /* ViewController.swift */; };
-		35C544E4267D13D10068AFA4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 35C544E2267D13D10068AFA4 /* Main.storyboard */; };
 		35C544E6267D13D30068AFA4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 35C544E5267D13D30068AFA4 /* Assets.xcassets */; };
 		35C544E9267D13D30068AFA4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 35C544E7267D13D30068AFA4 /* LaunchScreen.storyboard */; };
+		35C544FA267D15240068AFA4 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C544F2267D15240068AFA4 /* Config.swift */; };
+		35C544FB267D15240068AFA4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C544F3267D15240068AFA4 /* AppDelegate.swift */; };
+		35C544FC267D15240068AFA4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C544F4267D15240068AFA4 /* SceneDelegate.swift */; };
+		35C544FD267D15240068AFA4 /* Design.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C544F5267D15240068AFA4 /* Design.swift */; };
+		35C544FE267D15240068AFA4 /* ViewsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C544F7267D15240068AFA4 /* ViewsCoordinator.swift */; };
+		35C544FF267D15240068AFA4 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C544F8267D15240068AFA4 /* SignInViewController.swift */; };
+		35C54503267D15ED0068AFA4 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 35C54502267D15ED0068AFA4 /* SnapKit */; };
+		35C54506267D15FF0068AFA4 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 35C54505267D15FF0068AFA4 /* Alamofire */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		35C544D9267D13D10068AFA4 /* OmegaTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OmegaTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		35C544DC267D13D10068AFA4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		35C544DE267D13D10068AFA4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		35C544E0267D13D10068AFA4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		35C544E3267D13D10068AFA4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		35C544E5267D13D30068AFA4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		35C544E8267D13D30068AFA4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		35C544EA267D13D30068AFA4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		35C544F2267D15240068AFA4 /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
+		35C544F3267D15240068AFA4 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		35C544F4267D15240068AFA4 /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		35C544F5267D15240068AFA4 /* Design.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Design.swift; sourceTree = "<group>"; };
+		35C544F7267D15240068AFA4 /* ViewsCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewsCoordinator.swift; sourceTree = "<group>"; };
+		35C544F8267D15240068AFA4 /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +37,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				35C54503267D15ED0068AFA4 /* SnapKit in Frameworks */,
+				35C54506267D15FF0068AFA4 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -56,15 +64,57 @@
 		35C544DB267D13D10068AFA4 /* OmegaTest */ = {
 			isa = PBXGroup;
 			children = (
-				35C544DC267D13D10068AFA4 /* AppDelegate.swift */,
-				35C544DE267D13D10068AFA4 /* SceneDelegate.swift */,
-				35C544E0267D13D10068AFA4 /* ViewController.swift */,
-				35C544E2267D13D10068AFA4 /* Main.storyboard */,
-				35C544E5267D13D30068AFA4 /* Assets.xcassets */,
-				35C544E7267D13D30068AFA4 /* LaunchScreen.storyboard */,
-				35C544EA267D13D30068AFA4 /* Info.plist */,
+				35C544F1267D15240068AFA4 /* App */,
+				35C544F0267D15240068AFA4 /* Models */,
+				35C544F9267D15240068AFA4 /* Services */,
+				35C544F6267D15240068AFA4 /* Views */,
+				35C54500267D15430068AFA4 /* Supporting Files */,
 			);
 			path = OmegaTest;
+			sourceTree = "<group>";
+		};
+		35C544F0267D15240068AFA4 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		35C544F1267D15240068AFA4 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				35C544F2267D15240068AFA4 /* Config.swift */,
+				35C544F3267D15240068AFA4 /* AppDelegate.swift */,
+				35C544F4267D15240068AFA4 /* SceneDelegate.swift */,
+				35C544F5267D15240068AFA4 /* Design.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		35C544F6267D15240068AFA4 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				35C544F7267D15240068AFA4 /* ViewsCoordinator.swift */,
+				35C544F8267D15240068AFA4 /* SignInViewController.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		35C544F9267D15240068AFA4 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		35C54500267D15430068AFA4 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				35C544E7267D13D30068AFA4 /* LaunchScreen.storyboard */,
+				35C544EA267D13D30068AFA4 /* Info.plist */,
+				35C544E5267D13D30068AFA4 /* Assets.xcassets */,
+			);
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -83,6 +133,10 @@
 			dependencies = (
 			);
 			name = OmegaTest;
+			packageProductDependencies = (
+				35C54502267D15ED0068AFA4 /* SnapKit */,
+				35C54505267D15FF0068AFA4 /* Alamofire */,
+			);
 			productName = OmegaTest;
 			productReference = 35C544D9267D13D10068AFA4 /* OmegaTest.app */;
 			productType = "com.apple.product-type.application";
@@ -110,6 +164,10 @@
 				Base,
 			);
 			mainGroup = 35C544D0267D13D10068AFA4;
+			packageReferences = (
+				35C54501267D15ED0068AFA4 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				35C54504267D15FF0068AFA4 /* XCRemoteSwiftPackageReference "Alamofire" */,
+			);
 			productRefGroup = 35C544DA267D13D10068AFA4 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -126,7 +184,6 @@
 			files = (
 				35C544E9267D13D30068AFA4 /* LaunchScreen.storyboard in Resources */,
 				35C544E6267D13D30068AFA4 /* Assets.xcassets in Resources */,
-				35C544E4267D13D10068AFA4 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -137,23 +194,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				35C544E1267D13D10068AFA4 /* ViewController.swift in Sources */,
-				35C544DD267D13D10068AFA4 /* AppDelegate.swift in Sources */,
-				35C544DF267D13D10068AFA4 /* SceneDelegate.swift in Sources */,
+				35C544FD267D15240068AFA4 /* Design.swift in Sources */,
+				35C544FA267D15240068AFA4 /* Config.swift in Sources */,
+				35C544FE267D15240068AFA4 /* ViewsCoordinator.swift in Sources */,
+				35C544FF267D15240068AFA4 /* SignInViewController.swift in Sources */,
+				35C544FB267D15240068AFA4 /* AppDelegate.swift in Sources */,
+				35C544FC267D15240068AFA4 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		35C544E2267D13D10068AFA4 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				35C544E3267D13D10068AFA4 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		35C544E7267D13D30068AFA4 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -288,7 +340,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = F325XZB89B;
-				INFOPLIST_FILE = OmegaTest/Info.plist;
+				INFOPLIST_FILE = "OmegaTest/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -307,7 +359,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = F325XZB89B;
-				INFOPLIST_FILE = OmegaTest/Info.plist;
+				INFOPLIST_FILE = "OmegaTest/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -341,6 +393,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		35C54501267D15ED0068AFA4 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.1;
+			};
+		};
+		35C54504267D15FF0068AFA4 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.4.3;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		35C54502267D15ED0068AFA4 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 35C54501267D15ED0068AFA4 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+		35C54505267D15FF0068AFA4 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 35C54504267D15FF0068AFA4 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 35C544D1267D13D10068AFA4 /* Project object */;
 }
