@@ -25,6 +25,7 @@
 		35C54514267DF1FD0068AFA4 /* PhoneNumberFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C54513267DF1FD0068AFA4 /* PhoneNumberFormatter.swift */; };
 		35C54517267E0A000068AFA4 /* FormValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C54516267E0A000068AFA4 /* FormValidator.swift */; };
 		35C54519267E103D0068AFA4 /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C54518267E103D0068AFA4 /* ArrayExtension.swift */; };
+		35C5451B267E44570068AFA4 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C5451A267E44570068AFA4 /* SignInViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +47,7 @@
 		35C54513267DF1FD0068AFA4 /* PhoneNumberFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberFormatter.swift; sourceTree = "<group>"; };
 		35C54516267E0A000068AFA4 /* FormValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormValidator.swift; sourceTree = "<group>"; };
 		35C54518267E103D0068AFA4 /* ArrayExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayExtension.swift; sourceTree = "<group>"; };
+		35C5451A267E44570068AFA4 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,9 +113,10 @@
 		35C544F6267D15240068AFA4 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				35C5450E267DE3F80068AFA4 /* Other Elements */,
 				35C544F7267D15240068AFA4 /* ViewsCoordinator.swift */,
 				35C544F8267D15240068AFA4 /* SignUpViewController.swift */,
+				35C5451A267E44570068AFA4 /* SignInViewController.swift */,
+				35C5450E267DE3F80068AFA4 /* Other Elements */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -242,6 +245,7 @@
 				35C54517267E0A000068AFA4 /* FormValidator.swift in Sources */,
 				35C5450D267D39F20068AFA4 /* ElementsDesigner.swift in Sources */,
 				35C544FE267D15240068AFA4 /* ViewsCoordinator.swift in Sources */,
+				35C5451B267E44570068AFA4 /* SignInViewController.swift in Sources */,
 				35C54508267D1F550068AFA4 /* DateCounter.swift in Sources */,
 				35C544FF267D15240068AFA4 /* SignUpViewController.swift in Sources */,
 				35C544FB267D15240068AFA4 /* AppDelegate.swift in Sources */,

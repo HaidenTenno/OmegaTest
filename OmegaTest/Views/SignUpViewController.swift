@@ -19,8 +19,8 @@ final class SignUpViewController: UIViewController {
     private var phoneTextField: UITextField!
     private var emailTextField: UITextField!
     private var passwordTextField: UITextField!
-    private var signInButton: UIButton!
-    private var dontHaveAnAccountButton: UIButton!
+    private var signUpButton: UIButton!
+    private var haveAnAccountButton: UIButton!
     private var spacerView: UIView!
     
     // Services
@@ -28,12 +28,12 @@ final class SignUpViewController: UIViewController {
     
     // Callbacks
     private let onSignedUp: () -> Void
-    private let onDontHaveAnAccount: () -> Void
+    private let onHaveAnAccount: () -> Void
     
     // Public
-    init(onSignedUp: @escaping () -> Void, onDontHaveAnAccount: @escaping () -> Void) {
+    init(onSignedUp: @escaping () -> Void, onHaveAnAccount: @escaping () -> Void) {
         self.onSignedUp = onSignedUp
-        self.onDontHaveAnAccount = onDontHaveAnAccount
+        self.onHaveAnAccount = onHaveAnAccount
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -87,7 +87,7 @@ private extension SignUpViewController {
     }
     
     @objc private func onHaveAnAccountButtonButtonTouched() {
-        onDontHaveAnAccount()
+        onHaveAnAccount()
     }
     
     private func checkEmpty() -> Bool {
@@ -100,7 +100,6 @@ private extension SignUpViewController {
         {
             return false
         }
-        
         return true
     }
 }
@@ -154,15 +153,15 @@ private extension SignUpViewController {
         passwordTextField.isSecureTextEntry = true
         globalStackView.addArrangedSubview(passwordTextField)
         
-        // signInButton
-        signInButton = ElementsDesigner.getApplyDesignedButton(title: "Sign up")
-        signInButton.addTarget(self, action: #selector(onSignInButtonTouched), for: .touchUpInside)
-        globalStackView.addArrangedSubview(signInButton)
+        // signUpButton
+        signUpButton = ElementsDesigner.getApplyDesignedButton(title: "Sign up")
+        signUpButton.addTarget(self, action: #selector(onSignInButtonTouched), for: .touchUpInside)
+        globalStackView.addArrangedSubview(signUpButton)
         
-        // dontHaveAnAccountButton
-        dontHaveAnAccountButton = ElementsDesigner.getSmallButton(title: "I have an account")
-        dontHaveAnAccountButton.addTarget(self, action: #selector(onHaveAnAccountButtonButtonTouched), for: .touchUpInside)
-        globalStackView.addArrangedSubview(dontHaveAnAccountButton)
+        // haveAnAccountButton
+        haveAnAccountButton = ElementsDesigner.getSmallButton(title: "I have an account")
+        haveAnAccountButton.addTarget(self, action: #selector(onHaveAnAccountButtonButtonTouched), for: .touchUpInside)
+        globalStackView.addArrangedSubview(haveAnAccountButton)
         
         // spacerView
         spacerView = UIView()
@@ -222,15 +221,15 @@ private extension SignUpViewController {
             make.height.equalTo(firstNameTextField)
         }
         
-        // signInButton
-        signInButton.snp.makeConstraints { make in
+        // signUpButton
+        signUpButton.snp.makeConstraints { make in
             make.left.equalTo(globalStackView)
             make.right.equalTo(globalStackView)
             make.height.equalTo(40)
         }
         
-        // dontHaveAnAccountButton
-        dontHaveAnAccountButton.snp.makeConstraints { make in
+        // haveAnAccountButton
+        haveAnAccountButton.snp.makeConstraints { make in
             make.left.equalTo(globalStackView)
             make.right.equalTo(globalStackView)
             make.height.equalTo(40)
