@@ -27,8 +27,12 @@ private extension ViewsCoordinator {
     // MARK: - Creators
     private func createSignUpVC() -> SignUpViewController {
         let signUpVC = SignUpViewController(
-            onSignedUp: {
+            userRepository: RealmUserRepository(),
+            onSignedUp: { [unowned self] in
+                #if DEBUG
                 print("SIGNED UP")
+                #endif
+                self.navigationController.popViewController(animated: true)
             },
             onHaveAnAccount: { [unowned self] in
                 self.navigationController.popViewController(animated: true)
@@ -38,6 +42,7 @@ private extension ViewsCoordinator {
     
     private func createSignInVC() -> SignInViewController {
         let signInVC = SignInViewController(
+            userRepository: RealmUserRepository(),
             onSignedIn: {
                 print("SIGNED IN")
             },
@@ -55,8 +60,6 @@ private extension ViewsCoordinator {
     
     private func presentSignInScreen() {
         let signInVC = createSignInVC()
-//        signInVC.modalPresentationStyle = .fullScreen
-//        navigationController.present(signInVC, animated: false, completion: nil)
         navigationController.pushViewController(signInVC, animated: false)
     }
 }

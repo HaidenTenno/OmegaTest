@@ -24,6 +24,7 @@ final class SignUpViewController: UIViewController {
     private var spacerView: UIView!
     
     // Services
+    private let userRepository: UserRepository
     private let dateCounter = DateCounter()
     
     // Callbacks
@@ -31,7 +32,8 @@ final class SignUpViewController: UIViewController {
     private let onHaveAnAccount: () -> Void
     
     // Public
-    init(onSignedUp: @escaping () -> Void, onHaveAnAccount: @escaping () -> Void) {
+    init(userRepository: UserRepository, onSignedUp: @escaping () -> Void, onHaveAnAccount: @escaping () -> Void) {
+        self.userRepository = userRepository
         self.onSignedUp = onSignedUp
         self.onHaveAnAccount = onHaveAnAccount
         super.init(nibName: nil, bundle: nil)
@@ -83,7 +85,9 @@ private extension SignUpViewController {
             return
         }
         
-        onSignedUp()
+        // User creation
+        
+//        onSignedUp()
     }
     
     @objc private func onHaveAnAccountButtonButtonTouched() {

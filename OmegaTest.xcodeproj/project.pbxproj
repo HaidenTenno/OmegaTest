@@ -26,6 +26,13 @@
 		35C54517267E0A000068AFA4 /* FormValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C54516267E0A000068AFA4 /* FormValidator.swift */; };
 		35C54519267E103D0068AFA4 /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C54518267E103D0068AFA4 /* ArrayExtension.swift */; };
 		35C5451B267E44570068AFA4 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C5451A267E44570068AFA4 /* SignInViewController.swift */; };
+		35C5451F267E73CB0068AFA4 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C5451E267E73CB0068AFA4 /* User.swift */; };
+		35C54522267E74330068AFA4 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C54521267E74330068AFA4 /* Repository.swift */; };
+		35C54525267E74820068AFA4 /* URLRequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C54524267E74820068AFA4 /* URLRequestBuilder.swift */; };
+		35C54527267E74880068AFA4 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C54526267E74880068AFA4 /* NetworkService.swift */; };
+		35C54529267E76B40068AFA4 /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C54528267E76B40068AFA4 /* UserRepository.swift */; };
+		35C5452C267E78540068AFA4 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 35C5452B267E78540068AFA4 /* Realm */; };
+		35C5452E267E78540068AFA4 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 35C5452D267E78540068AFA4 /* RealmSwift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +55,11 @@
 		35C54516267E0A000068AFA4 /* FormValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormValidator.swift; sourceTree = "<group>"; };
 		35C54518267E103D0068AFA4 /* ArrayExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayExtension.swift; sourceTree = "<group>"; };
 		35C5451A267E44570068AFA4 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
+		35C5451E267E73CB0068AFA4 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		35C54521267E74330068AFA4 /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
+		35C54524267E74820068AFA4 /* URLRequestBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLRequestBuilder.swift; sourceTree = "<group>"; };
+		35C54526267E74880068AFA4 /* NetworkService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		35C54528267E76B40068AFA4 /* UserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepository.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +67,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				35C5452E267E78540068AFA4 /* RealmSwift in Frameworks */,
+				35C5452C267E78540068AFA4 /* Realm in Frameworks */,
 				35C54503267D15ED0068AFA4 /* SnapKit in Frameworks */,
 				35C54506267D15FF0068AFA4 /* Alamofire in Frameworks */,
 			);
@@ -95,6 +109,9 @@
 		35C544F0267D15240068AFA4 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				35C5451C267E73750068AFA4 /* User */,
+				35C5451D267E737D0068AFA4 /* Album */,
+				35C54521267E74330068AFA4 /* Repository.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -124,6 +141,7 @@
 		35C544F9267D15240068AFA4 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				35C54523267E74710068AFA4 /* Networking */,
 				35C54507267D1F550068AFA4 /* DateCounter.swift */,
 				35C54513267DF1FD0068AFA4 /* PhoneNumberFormatter.swift */,
 				35C54516267E0A000068AFA4 /* FormValidator.swift */,
@@ -160,6 +178,31 @@
 			path = "Other Elements";
 			sourceTree = "<group>";
 		};
+		35C5451C267E73750068AFA4 /* User */ = {
+			isa = PBXGroup;
+			children = (
+				35C5451E267E73CB0068AFA4 /* User.swift */,
+				35C54528267E76B40068AFA4 /* UserRepository.swift */,
+			);
+			path = User;
+			sourceTree = "<group>";
+		};
+		35C5451D267E737D0068AFA4 /* Album */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Album;
+			sourceTree = "<group>";
+		};
+		35C54523267E74710068AFA4 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				35C54524267E74820068AFA4 /* URLRequestBuilder.swift */,
+				35C54526267E74880068AFA4 /* NetworkService.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -179,6 +222,8 @@
 			packageProductDependencies = (
 				35C54502267D15ED0068AFA4 /* SnapKit */,
 				35C54505267D15FF0068AFA4 /* Alamofire */,
+				35C5452B267E78540068AFA4 /* Realm */,
+				35C5452D267E78540068AFA4 /* RealmSwift */,
 			);
 			productName = OmegaTest;
 			productReference = 35C544D9267D13D10068AFA4 /* OmegaTest.app */;
@@ -210,6 +255,7 @@
 			packageReferences = (
 				35C54501267D15ED0068AFA4 /* XCRemoteSwiftPackageReference "SnapKit" */,
 				35C54504267D15FF0068AFA4 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				35C5452A267E78540068AFA4 /* XCRemoteSwiftPackageReference "realm-cocoa" */,
 			);
 			productRefGroup = 35C544DA267D13D10068AFA4 /* Products */;
 			projectDirPath = "";
@@ -241,16 +287,21 @@
 				35C5450B267D26190068AFA4 /* UITextFieldExtension.swift in Sources */,
 				35C54512267DEE4D0068AFA4 /* LoadingIndicatorView.swift in Sources */,
 				35C544FA267D15240068AFA4 /* Config.swift in Sources */,
+				35C5451F267E73CB0068AFA4 /* User.swift in Sources */,
 				35C54514267DF1FD0068AFA4 /* PhoneNumberFormatter.swift in Sources */,
 				35C54517267E0A000068AFA4 /* FormValidator.swift in Sources */,
 				35C5450D267D39F20068AFA4 /* ElementsDesigner.swift in Sources */,
 				35C544FE267D15240068AFA4 /* ViewsCoordinator.swift in Sources */,
 				35C5451B267E44570068AFA4 /* SignInViewController.swift in Sources */,
 				35C54508267D1F550068AFA4 /* DateCounter.swift in Sources */,
+				35C54525267E74820068AFA4 /* URLRequestBuilder.swift in Sources */,
 				35C544FF267D15240068AFA4 /* SignUpViewController.swift in Sources */,
+				35C54522267E74330068AFA4 /* Repository.swift in Sources */,
 				35C544FB267D15240068AFA4 /* AppDelegate.swift in Sources */,
+				35C54527267E74880068AFA4 /* NetworkService.swift in Sources */,
 				35C54519267E103D0068AFA4 /* ArrayExtension.swift in Sources */,
 				35C544FC267D15240068AFA4 /* SceneDelegate.swift in Sources */,
+				35C54529267E76B40068AFA4 /* UserRepository.swift in Sources */,
 				35C54510267DE40E0068AFA4 /* UITextFieldPadding.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -463,6 +514,14 @@
 				minimumVersion = 5.4.3;
 			};
 		};
+		35C5452A267E78540068AFA4 /* XCRemoteSwiftPackageReference "realm-cocoa" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-cocoa";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.8.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -475,6 +534,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 35C54504267D15FF0068AFA4 /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
+		};
+		35C5452B267E78540068AFA4 /* Realm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 35C5452A267E78540068AFA4 /* XCRemoteSwiftPackageReference "realm-cocoa" */;
+			productName = Realm;
+		};
+		35C5452D267E78540068AFA4 /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 35C5452A267E78540068AFA4 /* XCRemoteSwiftPackageReference "realm-cocoa" */;
+			productName = RealmSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

@@ -19,13 +19,15 @@ class SignInViewController: UIViewController {
     private var spacerView: UIView!
     
     // Services
+    private let userRepository: UserRepository
     
     // Callbacks
     private let onSignedIn: () -> Void
     private let onDontHaveAnAccount: () -> Void
     
     // Public
-    init(onSignedIn: @escaping () -> Void, onDontHaveAnAccount: @escaping () -> Void) {
+    init(userRepository: UserRepository, onSignedIn: @escaping () -> Void, onDontHaveAnAccount: @escaping () -> Void) {
+        self.userRepository = userRepository
         self.onSignedIn = onSignedIn
         self.onDontHaveAnAccount = onDontHaveAnAccount
         super.init(nibName: nil, bundle: nil)
@@ -57,7 +59,9 @@ private extension SignInViewController {
             return
         }
         
-        onSignedIn()
+        // Check if user exists
+        
+//        onSignedIn()
     }
     
     @objc private func onDontHaveAnAccountButtonButtonTouched() {
