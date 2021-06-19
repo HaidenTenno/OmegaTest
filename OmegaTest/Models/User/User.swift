@@ -16,7 +16,8 @@ class User: Object {
     @objc dynamic var email = ""
     @objc dynamic var password = ""
     
-    init(firstName: String, lastName: String, age: Int, phoneNumber: String, email: String, password: String) {
+    convenience init(firstName: String, lastName: String, age: Int, phoneNumber: String, email: String, password: String) {
+        self.init()
         self.firstName = firstName
         self.lastName = lastName
         self.age = age

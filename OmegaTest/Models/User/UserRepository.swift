@@ -28,7 +28,7 @@ final class RealmUserRepository: UserRepository {
         completion(.success(users))
         return
     }
-
+    
     func getSingle(email: String, completion: @escaping (Result<User, RepositoryError>) -> Void) {
         let person = realm.object(ofType: User.self, forPrimaryKey: email) // ???
         guard let user = person else {
@@ -37,7 +37,7 @@ final class RealmUserRepository: UserRepository {
         }
         completion(.success(user))
     }
-
+    
     func signIn(email: String, password: String, completion: @escaping (Result<User, RepositoryError>) -> Void) {
         getSingle(email: email) { result in
             switch result {
@@ -52,12 +52,13 @@ final class RealmUserRepository: UserRepository {
             }
         }
     }
-
+    
     func signUp(firstName: String, lastName: String, age: Int, phoneNumber: String, email: String, password: String, completion: @escaping (Result<User, RepositoryError>) -> Void) {
         do {
             try realm.write {
                 let user = User(firstName: firstName, lastName: lastName, age: age, phoneNumber: phoneNumber, email: email, password: password)
                 realm.add(user)
+                completion(.success(user))
             }
         } catch (let error) {
             completion(.failure(RepositoryError.internalError(error)))

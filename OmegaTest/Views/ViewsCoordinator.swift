@@ -43,8 +43,8 @@ private extension ViewsCoordinator {
     private func createSignInVC() -> SignInViewController {
         let signInVC = SignInViewController(
             userRepository: RealmUserRepository(),
-            onSignedIn: {
-                print("SIGNED IN")
+            onSignedIn: { email in
+                print("SIGNED IN \(email)")
             },
             onDontHaveAnAccount: { [unowned self] in
                 presentSignUpScreen()

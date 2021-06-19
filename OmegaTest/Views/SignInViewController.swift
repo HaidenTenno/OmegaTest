@@ -22,11 +22,11 @@ class SignInViewController: UIViewController {
     private let userRepository: UserRepository
     
     // Callbacks
-    private let onSignedIn: () -> Void
+    private let onSignedIn: (String) -> Void
     private let onDontHaveAnAccount: () -> Void
     
     // Public
-    init(userRepository: UserRepository, onSignedIn: @escaping () -> Void, onDontHaveAnAccount: @escaping () -> Void) {
+    init(userRepository: UserRepository, onSignedIn: @escaping (String) -> Void, onDontHaveAnAccount: @escaping () -> Void) {
         self.userRepository = userRepository
         self.onSignedIn = onSignedIn
         self.onDontHaveAnAccount = onDontHaveAnAccount
@@ -60,8 +60,31 @@ private extension SignInViewController {
         }
         
         // Check if user exists
+        LoadingIndicatorView.show()
+        userRepository.signIn(email: emailTextField.text!, password: passwordTextField.text!) { [weak self] result in
+            LoadingIndicatorView.hide()
+            guard let self = self else { return }
+            switch result {
+            case .failure(let error):
+                switch error {
+                case .notFound:
+                    let alertController = UIAlertController(title: "Can't sign in", message: "User not found", preferredStyle: .alert)
+                    alertController.addAction(UIAlertAction(title: "Ok", style: .default))
+                    self.present(alertController, animated: true, completion: nil)
+                case .unauthorized:
+                    let alertController = UIAlertController(title: "Can't sign in", message: "Wrong password", preferredStyle: .alert)
+                    alertController.addAction(UIAlertAction(title: "Ok", style: .default))
+                    self.present(alertController, animated: true, completion: nil)
+                default:
+                    let alertController = UIAlertController(title: "Can't sign in", message: "Storage error", preferredStyle: .alert)
+                    alertController.addAction(UIAlertAction(title: "Ok", style: .default))
+                    self.present(alertController, animated: true, completion: nil)
+                }
+            case .success(let user):
+                self.onSignedIn(user.email)
+            }
+        }
         
-//        onSignedIn()
     }
     
     @objc private func onDontHaveAnAccountButtonButtonTouched() {

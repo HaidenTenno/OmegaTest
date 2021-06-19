@@ -69,7 +69,7 @@ private extension SignUpViewController {
         ageTextField.text = String(dateCounter.getYearsFromDate(date: ageDatePicker.date))
     }
     
-    @objc private func onSignInButtonTouched() {
+    @objc private func onSignUpButtonTouched() {
         if !checkEmpty() {
             let alertController = UIAlertController(title: "Error", message: "All fields are required", preferredStyle: .alert)
             alertController.addAction(UIAlertAction(title: "Ok", style: .default))
@@ -86,8 +86,40 @@ private extension SignUpViewController {
         }
         
         // User creation
-        
-//        onSignedUp()
+        LoadingIndicatorView.show()
+        userRepository.getSingle(email: emailTextField.text!) { [weak self] result in
+            LoadingIndicatorView.hide()
+            guard let self = self else { return }
+            switch result {
+            case .failure(let error):
+                switch error {
+                case .notFound:
+                    self.userRepository.signUp(firstName: self.firstNameTextField.text!,
+                                               lastName: self.lastNameTextField.text!,
+                                               age: Int(self.ageTextField.text!)!,
+                                               phoneNumber: self.phoneTextField.text!,
+                                               email: self.emailTextField.text!,
+                                               password: self.passwordTextField.text!) { result in
+                        switch result {
+                        case .failure:
+                            let alertController = UIAlertController(title: "Can't sign up", message: "Storage error", preferredStyle: .alert)
+                            alertController.addAction(UIAlertAction(title: "Ok", style: .default))
+                            self.present(alertController, animated: true, completion: nil)
+                        case .success:
+                            self.onSignedUp()
+                        }
+                    }
+                default:
+                    let alertController = UIAlertController(title: "Can't sign up", message: "Storage error", preferredStyle: .alert)
+                    alertController.addAction(UIAlertAction(title: "Ok", style: .default))
+                    self.present(alertController, animated: true, completion: nil)
+                }
+            case .success:
+                let alertController = UIAlertController(title: "Can't sign up", message: "User already exists", preferredStyle: .alert)
+                alertController.addAction(UIAlertAction(title: "Ok", style: .default))
+                self.present(alertController, animated: true, completion: nil)
+            }
+        }
     }
     
     @objc private func onHaveAnAccountButtonButtonTouched() {
@@ -159,7 +191,7 @@ private extension SignUpViewController {
         
         // signUpButton
         signUpButton = ElementsDesigner.getApplyDesignedButton(title: "Sign up")
-        signUpButton.addTarget(self, action: #selector(onSignInButtonTouched), for: .touchUpInside)
+        signUpButton.addTarget(self, action: #selector(onSignUpButtonTouched), for: .touchUpInside)
         globalStackView.addArrangedSubview(signUpButton)
         
         // haveAnAccountButton
