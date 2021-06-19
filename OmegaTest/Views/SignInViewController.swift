@@ -21,17 +21,21 @@ final class SignInViewController: UIViewController {
     private var passwordTextField: UITextField!
     private var signInButton: UIButton!
     private var dontHaveAnAccountButton: UIButton!
+    private var spacerView: UIView!
     
-    private var activeTextField: UITextField? = nil
+//    private var activeTextField: UITextField? = nil
     
     // Services
     private let dateCounter = DateCounter()
     
     // Callbacks
-    
+    private let onSignedIn: () -> Void
+    private let onDontHaveAnAccount: () -> Void
     
     // Public
-    init() {
+    init(onSignedIn: @escaping () -> Void, onDontHaveAnAccount: @escaping () -> Void) {
+        self.onSignedIn = onSignedIn
+        self.onDontHaveAnAccount = onDontHaveAnAccount
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -43,7 +47,7 @@ final class SignInViewController: UIViewController {
         super.viewDidLoad()
         setupView()
         setupDoneEditingGesture()
-        setupKeyboardAppear()
+//        setupKeyboardNotifications()
     }
 }
 
@@ -55,10 +59,10 @@ private extension SignInViewController {
         view.addGestureRecognizer(gesture)
     }
     
-    private func setupKeyboardAppear() {
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
-    }
+//    private func setupKeyboardNotifications() {
+//        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+//        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+//    }
     
     private func setupDatePicker() {
         ageDatePicker = UIDatePicker()
@@ -71,25 +75,33 @@ private extension SignInViewController {
         ageTextField.text = String(dateCounter.getYearsFromDate(date: datePicker.date))
     }
     
-    @objc func keyboardWillShow(notification: NSNotification) {
-        guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else { return }
-        var shouldMoveViewUp = false
-        
-        if let activeTextField = activeTextField {
-            let bottomOfTextField = activeTextField.convert(activeTextField.bounds, to: self.view).maxY;
-            let topOfKeyboard = self.view.frame.height - keyboardSize.height
-            if bottomOfTextField > topOfKeyboard {
-                shouldMoveViewUp = true
-            }
-        }
-        
-        if(shouldMoveViewUp) {
-            self.view.frame.origin.y = 0 - keyboardSize.height
-        }
+//    @objc private func keyboardWillShow(notification: NSNotification) {
+//        guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else { return }
+//        var shouldMoveViewUp = false
+//
+//        if let activeTextField = activeTextField {
+//            let bottomOfTextField = activeTextField.convert(activeTextField.bounds, to: self.view).maxY;
+//            let topOfKeyboard = self.view.frame.height - keyboardSize.height
+//            if bottomOfTextField > topOfKeyboard {
+//                shouldMoveViewUp = true
+//            }
+//        }
+//
+//        if shouldMoveViewUp {
+//            self.view.frame.origin.y = 0 - keyboardSize.height
+//        }
+//    }
+//
+//    @objc private func keyboardWillHide(notification: NSNotification) {
+//        self.view.frame.origin.y = 0
+//    }
+    
+    @objc private func onSignInButtonTouched() {
+        print("Sign in")
     }
     
-    @objc func keyboardWillHide(notification: NSNotification) {
-        self.view.frame.origin.y = 0
+    @objc private func onDontHaveAnAccountButtonButtonTouched() {
+        print("Dont have an account")
     }
 }
 
@@ -105,84 +117,56 @@ private extension SignInViewController {
         globalStackView.alignment = .center
         globalStackView.axis = .vertical
         globalStackView.spacing = 20
-        globalStackView.distribution = .fillEqually
+        globalStackView.distribution = .fill
         view.addSubview(globalStackView)
         
         // firstNameTextField
-        firstNameTextField = UITextField()
+        firstNameTextField = ElementsDesigner.getDesignedTextField(placeholder: "First name", delegate: self)
         firstNameTextField.keyboardType = .asciiCapable
-        firstNameTextField.backgroundColor = Design.Colors.fieldBackground
-        firstNameTextField.layer.borderWidth = 1.0
-        firstNameTextField.layer.borderColor = Design.Colors.fieldBorder.cgColor
-        firstNameTextField.placeholder = "First name"
-        firstNameTextField.addDoneButtonOnKeyboard()
-        firstNameTextField.delegate = self
         globalStackView.addArrangedSubview(firstNameTextField)
         
         // lastNameTextField
-        lastNameTextField = UITextField()
+        lastNameTextField = ElementsDesigner.getDesignedTextField(placeholder: "Last name", delegate: self)
         lastNameTextField.keyboardType = .asciiCapable
-        lastNameTextField.backgroundColor = Design.Colors.fieldBackground
-        lastNameTextField.layer.borderWidth = 1.0
-        lastNameTextField.layer.borderColor = Design.Colors.fieldBorder.cgColor
-        lastNameTextField.placeholder = "Last name"
-        lastNameTextField.addDoneButtonOnKeyboard()
-        lastNameTextField.delegate = self
         globalStackView.addArrangedSubview(lastNameTextField)
         
         // ageTextField
         setupDatePicker()
-        ageTextField = UITextField()
+        ageTextField = ElementsDesigner.getDesignedTextField(placeholder: "Age", delegate: self)
         ageTextField.inputView = ageDatePicker
-        ageTextField.backgroundColor = Design.Colors.fieldBackground
-        ageTextField.layer.borderWidth = 1.0
-        ageTextField.layer.borderColor = Design.Colors.fieldBorder.cgColor
-        ageTextField.placeholder = "Age"
-        ageTextField.addDoneButtonOnKeyboard()
-        ageTextField.delegate = self
         globalStackView.addArrangedSubview(ageTextField)
         
         // phoneTextField
-        phoneTextField = UITextField()
+        phoneTextField = ElementsDesigner.getDesignedTextField(placeholder: "Phone number", delegate: self)
         phoneTextField.keyboardType = .numberPad
-        phoneTextField.backgroundColor = Design.Colors.fieldBackground
-        phoneTextField.layer.borderWidth = 1.0
-        phoneTextField.layer.borderColor = Design.Colors.fieldBorder.cgColor
-        phoneTextField.placeholder = "Phone number"
-        phoneTextField.addDoneButtonOnKeyboard()
-        phoneTextField.delegate = self
         globalStackView.addArrangedSubview(phoneTextField)
         
         // emailTextField
-        emailTextField = UITextField()
+        emailTextField = ElementsDesigner.getDesignedTextField(placeholder: "Email", delegate: self)
         emailTextField.autocorrectionType = .no
         emailTextField.autocapitalizationType = .none
-        emailTextField.backgroundColor = Design.Colors.fieldBackground
-        emailTextField.layer.borderWidth = 1.0
-        emailTextField.layer.borderColor = Design.Colors.fieldBorder.cgColor
-        emailTextField.placeholder = "Email"
-        emailTextField.addDoneButtonOnKeyboard()
-        emailTextField.delegate = self
         globalStackView.addArrangedSubview(emailTextField)
         
         // passwordTextField
-        passwordTextField = UITextField()
+        passwordTextField = ElementsDesigner.getDesignedTextField(placeholder: "Password", delegate: self)
         passwordTextField.autocorrectionType = .no
         passwordTextField.autocapitalizationType = .none
-        passwordTextField.backgroundColor = Design.Colors.fieldBackground
-        passwordTextField.layer.borderWidth = 1.0
-        passwordTextField.layer.borderColor = Design.Colors.fieldBorder.cgColor
         passwordTextField.isSecureTextEntry = true
-        passwordTextField.placeholder = "Password"
-        passwordTextField.addDoneButtonOnKeyboard()
-        passwordTextField.delegate = self
         globalStackView.addArrangedSubview(passwordTextField)
         
         // signInButton
-        
+        signInButton = ElementsDesigner.getApplyDesignedButton(title: "Sign in")
+        signInButton.addTarget(self, action: #selector(onSignInButtonTouched), for: .touchUpInside)
+        globalStackView.addArrangedSubview(signInButton)
         
         // dontHaveAnAccountButton
+        dontHaveAnAccountButton = ElementsDesigner.getSmallButton(title: "Dont have an account")
+        dontHaveAnAccountButton.addTarget(self, action: #selector(onDontHaveAnAccountButtonButtonTouched), for: .touchUpInside)
+        globalStackView.addArrangedSubview(dontHaveAnAccountButton)
         
+        // spacerView
+        spacerView = UIView()
+        globalStackView.addArrangedSubview(spacerView)
         
         makeConstraints()
     }
@@ -190,16 +174,17 @@ private extension SignInViewController {
     private func makeConstraints() {
         // globalStackView
         globalStackView.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide).offset(50)
-            make.bottom.equalTo(view.safeAreaLayoutGuide).offset(-50)
-            make.left.equalTo(view.safeAreaLayoutGuide).offset(50)
-            make.right.equalTo(view.safeAreaLayoutGuide).offset(-50)
+            make.top.equalTo(view.safeAreaLayoutGuide).offset(20)
+            make.bottom.equalTo(view.safeAreaLayoutGuide).offset(-20)
+            make.left.equalTo(view.safeAreaLayoutGuide).offset(20)
+            make.right.equalTo(view.safeAreaLayoutGuide).offset(-20)
         }
         
         // firstNameTextField
         firstNameTextField.snp.makeConstraints { make in
             make.left.equalTo(globalStackView)
             make.right.equalTo(globalStackView)
+            make.height.equalTo(40)
         }
         
         // lastNameTextField
@@ -238,26 +223,41 @@ private extension SignInViewController {
         }
         
         // signInButton
-        
+        signInButton.snp.makeConstraints { make in
+            make.left.equalTo(globalStackView)
+            make.right.equalTo(globalStackView)
+            make.height.equalTo(40)
+        }
         
         // dontHaveAnAccountButton
-        
+        dontHaveAnAccountButton.snp.makeConstraints { make in
+            make.left.equalTo(globalStackView)
+            make.right.equalTo(globalStackView)
+            make.height.equalTo(40)
+        }
     }
 }
 
 // MARK: - UITextFieldDelegate
 extension SignInViewController: UITextFieldDelegate {
     
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        self.activeTextField = textField
-    }
-    
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        self.activeTextField = nil
-    }
+//    func textFieldDidBeginEditing(_ textField: UITextField) {
+//        self.activeTextField = textField
+//    }
+//
+//    func textFieldDidEndEditing(_ textField: UITextField) {
+//        self.activeTextField = nil
+//    }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        guard textField == phoneTextField, let text = textField.text else { return false }
+        let newString = (text as NSString).replacingCharacters(in: range, with: string)
+        textField.text = PnoneNumberFormatter.format(with: "+7 (XXX) XXX-XX-XX", phone: newString)
+        return false
     }
 }

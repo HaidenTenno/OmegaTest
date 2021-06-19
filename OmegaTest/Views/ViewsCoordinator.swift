@@ -26,7 +26,13 @@ private extension ViewsCoordinator {
     
     // MARK: - Creators
     private func createSignInVC() -> SignInViewController {
-        let signInVC = SignInViewController()
+        let signInVC = SignInViewController (
+            onSignedIn: {
+                print("SIGNED IN")
+            },
+            onDontHaveAnAccount: {
+                print("DONT HAVE AN ACCOUNT")
+            })
         return signInVC
     }
     
