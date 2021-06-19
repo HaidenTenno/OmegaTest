@@ -10,6 +10,7 @@ import Foundation
 final class DateCounter {
     
     func getYearsFromDate(date: Date) -> Int {
-        Calendar.current.dateComponents([.year], from: date, to: Date()).year ?? 0
+        let years = Calendar.current.dateComponents([.year], from: date, to: Date()).year ?? 0
+        return years > 0 ? years : 0
     }
 }

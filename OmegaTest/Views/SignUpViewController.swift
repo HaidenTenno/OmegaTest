@@ -1,5 +1,5 @@
 //
-//  SignInViewController.swift
+//  SignUpViewController.swift
 //  OmegaTest
 //
 //  Created by Петр Тартынских  on 18.06.2021.
@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-final class SignInViewController: UIViewController {
+final class SignUpViewController: UIViewController {
     
     // UI
     private var globalStackView: UIStackView!
@@ -23,18 +23,16 @@ final class SignInViewController: UIViewController {
     private var dontHaveAnAccountButton: UIButton!
     private var spacerView: UIView!
     
-//    private var activeTextField: UITextField? = nil
-    
     // Services
     private let dateCounter = DateCounter()
     
     // Callbacks
-    private let onSignedIn: () -> Void
+    private let onSignedUp: () -> Void
     private let onDontHaveAnAccount: () -> Void
     
     // Public
-    init(onSignedIn: @escaping () -> Void, onDontHaveAnAccount: @escaping () -> Void) {
-        self.onSignedIn = onSignedIn
+    init(onSignedUp: @escaping () -> Void, onDontHaveAnAccount: @escaping () -> Void) {
+        self.onSignedUp = onSignedUp
         self.onDontHaveAnAccount = onDontHaveAnAccount
         super.init(nibName: nil, bundle: nil)
     }
@@ -47,66 +45,68 @@ final class SignInViewController: UIViewController {
         super.viewDidLoad()
         setupView()
         setupDoneEditingGesture()
-//        setupKeyboardNotifications()
     }
 }
 
 // MARK: - Private
-private extension SignInViewController {
+private extension SignUpViewController {
     
     private func setupDoneEditingGesture() {
         let gesture = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing(_:)))
         view.addGestureRecognizer(gesture)
     }
     
-//    private func setupKeyboardNotifications() {
-//        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
-//        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
-//    }
-    
     private func setupDatePicker() {
         ageDatePicker = UIDatePicker()
         ageDatePicker.datePickerMode = .date
         ageDatePicker.preferredDatePickerStyle = .wheels
-        ageDatePicker.addTarget(self, action: #selector(dateChanged(datePicker:)), for: .valueChanged)
+        ageDatePicker.addTarget(self, action: #selector(dateChanged), for: .valueChanged)
     }
     
-    @objc private func dateChanged(datePicker: UIDatePicker) {
-        ageTextField.text = String(dateCounter.getYearsFromDate(date: datePicker.date))
+    @objc private func dateChanged() {
+        ageTextField.text = String(dateCounter.getYearsFromDate(date: ageDatePicker.date))
     }
-    
-//    @objc private func keyboardWillShow(notification: NSNotification) {
-//        guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else { return }
-//        var shouldMoveViewUp = false
-//
-//        if let activeTextField = activeTextField {
-//            let bottomOfTextField = activeTextField.convert(activeTextField.bounds, to: self.view).maxY;
-//            let topOfKeyboard = self.view.frame.height - keyboardSize.height
-//            if bottomOfTextField > topOfKeyboard {
-//                shouldMoveViewUp = true
-//            }
-//        }
-//
-//        if shouldMoveViewUp {
-//            self.view.frame.origin.y = 0 - keyboardSize.height
-//        }
-//    }
-//
-//    @objc private func keyboardWillHide(notification: NSNotification) {
-//        self.view.frame.origin.y = 0
-//    }
     
     @objc private func onSignInButtonTouched() {
-        print("Sign in")
+        if !checkEmpty() {
+            let alertController = UIAlertController(title: "Error", message: "All fields are required", preferredStyle: .alert)
+            alertController.addAction(UIAlertAction(title: "Ok", style: .default))
+            self.present(alertController, animated: true, completion: nil)
+            return
+        }
+        
+        let validationErrors = FormValidator.getValidationErrors(firstName: firstNameTextField.text!, lastName: lastNameTextField.text!, age: ageTextField.text!, pnone: phoneTextField.text!, email: emailTextField.text!, password: passwordTextField.text!)
+        if validationErrors.count != 0 {
+            let alertController = UIAlertController(title: "Error", message: validationErrors.joined(separator: "\n"), preferredStyle: .alert)
+            alertController.addAction(UIAlertAction(title: "Ok", style: .default))
+            self.present(alertController, animated: true, completion: nil)
+            return
+        }
+        
+        onSignedUp()
     }
     
-    @objc private func onDontHaveAnAccountButtonButtonTouched() {
-        print("Dont have an account")
+    @objc private func onHaveAnAccountButtonButtonTouched() {
+        onDontHaveAnAccount()
+    }
+    
+    private func checkEmpty() -> Bool {
+        if firstNameTextField.text?.count == 0 ||
+            lastNameTextField.text?.count == 0 ||
+            ageTextField.text?.count == 0 ||
+            phoneTextField.text?.count == 0 ||
+            emailTextField.text?.count == 0 ||
+            passwordTextField.text?.count == 0
+        {
+            return false
+        }
+        
+        return true
     }
 }
 
 // MARK: - UI
-private extension SignInViewController {
+private extension SignUpViewController {
     
     private func setupView() {
         // self
@@ -155,13 +155,13 @@ private extension SignInViewController {
         globalStackView.addArrangedSubview(passwordTextField)
         
         // signInButton
-        signInButton = ElementsDesigner.getApplyDesignedButton(title: "Sign in")
+        signInButton = ElementsDesigner.getApplyDesignedButton(title: "Sign up")
         signInButton.addTarget(self, action: #selector(onSignInButtonTouched), for: .touchUpInside)
         globalStackView.addArrangedSubview(signInButton)
         
         // dontHaveAnAccountButton
-        dontHaveAnAccountButton = ElementsDesigner.getSmallButton(title: "Dont have an account")
-        dontHaveAnAccountButton.addTarget(self, action: #selector(onDontHaveAnAccountButtonButtonTouched), for: .touchUpInside)
+        dontHaveAnAccountButton = ElementsDesigner.getSmallButton(title: "I have an account")
+        dontHaveAnAccountButton.addTarget(self, action: #selector(onHaveAnAccountButtonButtonTouched), for: .touchUpInside)
         globalStackView.addArrangedSubview(dontHaveAnAccountButton)
         
         // spacerView
@@ -239,15 +239,7 @@ private extension SignInViewController {
 }
 
 // MARK: - UITextFieldDelegate
-extension SignInViewController: UITextFieldDelegate {
-    
-//    func textFieldDidBeginEditing(_ textField: UITextField) {
-//        self.activeTextField = textField
-//    }
-//
-//    func textFieldDidEndEditing(_ textField: UITextField) {
-//        self.activeTextField = nil
-//    }
+extension SignUpViewController: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
@@ -255,7 +247,7 @@ extension SignInViewController: UITextFieldDelegate {
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        guard textField == phoneTextField, let text = textField.text else { return false }
+        guard textField == phoneTextField, let text = textField.text else { return true }
         let newString = (text as NSString).replacingCharacters(in: range, with: string)
         textField.text = PnoneNumberFormatter.format(with: "+7 (XXX) XXX-XX-XX", phone: newString)
         return false

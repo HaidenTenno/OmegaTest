@@ -17,7 +17,7 @@ final class ViewsCoordinator {
     }
     
     func start() {
-        presentSignInScreen()
+        presentSignUpScreen()
     }
 }
 
@@ -25,21 +25,21 @@ final class ViewsCoordinator {
 private extension ViewsCoordinator {
     
     // MARK: - Creators
-    private func createSignInVC() -> SignInViewController {
-        let signInVC = SignInViewController (
-            onSignedIn: {
-                print("SIGNED IN")
+    private func createSignUpVC() -> SignUpViewController {
+        let signUpVC = SignUpViewController (
+            onSignedUp: {
+                print("SIGNED UP")
             },
             onDontHaveAnAccount: {
-                print("DONT HAVE AN ACCOUNT")
+                print("I HAVE AN ACCOUNT")
             })
-        return signInVC
+        return signUpVC
     }
     
     // MARK: - Presetners
-    private func presentSignInScreen() {
-        let signInVC = createSignInVC()
-        signInVC.modalPresentationStyle = .fullScreen
-        navigationController.present(signInVC, animated: false, completion: nil)
+    private func presentSignUpScreen() {
+        let signUpVC = createSignUpVC()
+        signUpVC.modalPresentationStyle = .fullScreen
+        navigationController.present(signUpVC, animated: false, completion: nil)
     }
 }

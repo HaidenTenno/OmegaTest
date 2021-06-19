@@ -14,7 +14,7 @@
 		35C544FC267D15240068AFA4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C544F4267D15240068AFA4 /* SceneDelegate.swift */; };
 		35C544FD267D15240068AFA4 /* Design.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C544F5267D15240068AFA4 /* Design.swift */; };
 		35C544FE267D15240068AFA4 /* ViewsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C544F7267D15240068AFA4 /* ViewsCoordinator.swift */; };
-		35C544FF267D15240068AFA4 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C544F8267D15240068AFA4 /* SignInViewController.swift */; };
+		35C544FF267D15240068AFA4 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C544F8267D15240068AFA4 /* SignUpViewController.swift */; };
 		35C54503267D15ED0068AFA4 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 35C54502267D15ED0068AFA4 /* SnapKit */; };
 		35C54506267D15FF0068AFA4 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 35C54505267D15FF0068AFA4 /* Alamofire */; };
 		35C54508267D1F550068AFA4 /* DateCounter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C54507267D1F550068AFA4 /* DateCounter.swift */; };
@@ -23,6 +23,8 @@
 		35C54510267DE40E0068AFA4 /* UITextFieldPadding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C5450F267DE40E0068AFA4 /* UITextFieldPadding.swift */; };
 		35C54512267DEE4D0068AFA4 /* LoadingIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C54511267DEE4D0068AFA4 /* LoadingIndicatorView.swift */; };
 		35C54514267DF1FD0068AFA4 /* PhoneNumberFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C54513267DF1FD0068AFA4 /* PhoneNumberFormatter.swift */; };
+		35C54517267E0A000068AFA4 /* FormValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C54516267E0A000068AFA4 /* FormValidator.swift */; };
+		35C54519267E103D0068AFA4 /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C54518267E103D0068AFA4 /* ArrayExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,13 +37,15 @@
 		35C544F4267D15240068AFA4 /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		35C544F5267D15240068AFA4 /* Design.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Design.swift; sourceTree = "<group>"; };
 		35C544F7267D15240068AFA4 /* ViewsCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewsCoordinator.swift; sourceTree = "<group>"; };
-		35C544F8267D15240068AFA4 /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
+		35C544F8267D15240068AFA4 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		35C54507267D1F550068AFA4 /* DateCounter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateCounter.swift; sourceTree = "<group>"; };
 		35C5450A267D26190068AFA4 /* UITextFieldExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextFieldExtension.swift; sourceTree = "<group>"; };
 		35C5450C267D39F20068AFA4 /* ElementsDesigner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElementsDesigner.swift; sourceTree = "<group>"; };
 		35C5450F267DE40E0068AFA4 /* UITextFieldPadding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITextFieldPadding.swift; sourceTree = "<group>"; };
 		35C54511267DEE4D0068AFA4 /* LoadingIndicatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingIndicatorView.swift; sourceTree = "<group>"; };
 		35C54513267DF1FD0068AFA4 /* PhoneNumberFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberFormatter.swift; sourceTree = "<group>"; };
+		35C54516267E0A000068AFA4 /* FormValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormValidator.swift; sourceTree = "<group>"; };
+		35C54518267E103D0068AFA4 /* ArrayExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,7 +113,7 @@
 			children = (
 				35C5450E267DE3F80068AFA4 /* Other Elements */,
 				35C544F7267D15240068AFA4 /* ViewsCoordinator.swift */,
-				35C544F8267D15240068AFA4 /* SignInViewController.swift */,
+				35C544F8267D15240068AFA4 /* SignUpViewController.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -119,6 +123,7 @@
 			children = (
 				35C54507267D1F550068AFA4 /* DateCounter.swift */,
 				35C54513267DF1FD0068AFA4 /* PhoneNumberFormatter.swift */,
+				35C54516267E0A000068AFA4 /* FormValidator.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -137,6 +142,7 @@
 			isa = PBXGroup;
 			children = (
 				35C5450A267D26190068AFA4 /* UITextFieldExtension.swift */,
+				35C54518267E103D0068AFA4 /* ArrayExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -233,11 +239,13 @@
 				35C54512267DEE4D0068AFA4 /* LoadingIndicatorView.swift in Sources */,
 				35C544FA267D15240068AFA4 /* Config.swift in Sources */,
 				35C54514267DF1FD0068AFA4 /* PhoneNumberFormatter.swift in Sources */,
+				35C54517267E0A000068AFA4 /* FormValidator.swift in Sources */,
 				35C5450D267D39F20068AFA4 /* ElementsDesigner.swift in Sources */,
 				35C544FE267D15240068AFA4 /* ViewsCoordinator.swift in Sources */,
 				35C54508267D1F550068AFA4 /* DateCounter.swift in Sources */,
-				35C544FF267D15240068AFA4 /* SignInViewController.swift in Sources */,
+				35C544FF267D15240068AFA4 /* SignUpViewController.swift in Sources */,
 				35C544FB267D15240068AFA4 /* AppDelegate.swift in Sources */,
+				35C54519267E103D0068AFA4 /* ArrayExtension.swift in Sources */,
 				35C544FC267D15240068AFA4 /* SceneDelegate.swift in Sources */,
 				35C54510267DE40E0068AFA4 /* UITextFieldPadding.swift in Sources */,
 			);
