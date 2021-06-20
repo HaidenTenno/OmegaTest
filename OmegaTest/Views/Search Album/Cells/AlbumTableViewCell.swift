@@ -38,7 +38,7 @@ extension AlbumTableViewCell: ConfigurableCell {
         guard let viewModel = viewModel as? SearchAlbumViewModelAlbumItem else { return }
         
         // self
-        selectionStyle = .none
+        selectionStyle = .default
         backgroundColor = Design.Colors.tableBackground
         
         //  globalStackView

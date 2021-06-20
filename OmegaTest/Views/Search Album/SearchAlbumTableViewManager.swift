@@ -39,13 +39,16 @@ extension SearchAlbumTableViewManager: UITableViewDelegate, UITableViewDataSourc
         
         if let cell = cell as? ConfigurableCell {
             cell.configure(viewModel: item)
-            
-            // Actions for touches
         }
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let item = viewModel.sections[indexPath.section].items[indexPath.row]
+        if let viewModel = item as? SearchAlbumViewModelAlbumItem  {
+            onAlbumSelect(viewModel.value.collectionID)
+        }
+        
         tableView.deselectRow(at: indexPath, animated: true)
     }
 }
