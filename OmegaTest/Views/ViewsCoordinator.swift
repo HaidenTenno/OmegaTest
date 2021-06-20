@@ -32,10 +32,10 @@ private extension ViewsCoordinator {
                 #if DEBUG
                 print("SIGNED UP")
                 #endif
-                self.navigationController.popViewController(animated: true)
+                navigationController.popViewController(animated: true)
             },
             onHaveAnAccount: { [unowned self] in
-                self.navigationController.popViewController(animated: true)
+                navigationController.popViewController(animated: true)
             })
         return signUpVC
     }
@@ -43,13 +43,26 @@ private extension ViewsCoordinator {
     private func createSignInVC() -> SignInViewController {
         let signInVC = SignInViewController(
             userRepository: RealmUserRepository(),
-            onSignedIn: { email in
+            onSignedIn: { [unowned self] email in
+                #if DEBUG
                 print("SIGNED IN \(email)")
+                #endif
+                presentSearchAlbumScreen(userEmail: email)
             },
             onDontHaveAnAccount: { [unowned self] in
                 presentSignUpScreen()
             })
         return signInVC
+    }
+    
+    private func createSearchAlbumVC(userEmail: String) -> SearchAlbumViewController {
+        let searchAlbumVC = SearchAlbumViewController(
+            userEmail: userEmail,
+            userRepository: RealmUserRepository(),
+            onAlbumSelect: {
+                
+            })
+        return searchAlbumVC
     }
     
     // MARK: - Presetners
@@ -61,5 +74,10 @@ private extension ViewsCoordinator {
     private func presentSignInScreen() {
         let signInVC = createSignInVC()
         navigationController.pushViewController(signInVC, animated: false)
+    }
+    
+    private func presentSearchAlbumScreen(userEmail: String) {
+        let searchAlbumVC = createSearchAlbumVC(userEmail: userEmail)
+        navigationController.pushViewController(searchAlbumVC, animated: true)
     }
 }

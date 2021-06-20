@@ -9,4 +9,11 @@ import Foundation
 
 enum Config {
     
+    enum IDs {
+        enum Cells {
+            // SearchAlbum
+            static let userInfo = "UserInfoCell"
+            static let album = "AlbumCell"
+        }
+    }
 }
