@@ -34,7 +34,7 @@ extension SearchAlbumTableViewManager: UITableViewDelegate, UITableViewDataSourc
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let item = viewModel.sections[indexPath.section].items[indexPath.row]
-        
+                
         let cell = tableView.dequeueReusableCell(withIdentifier: item.identifier, for: indexPath)
         
         if let cell = cell as? ConfigurableCell {

@@ -69,22 +69,19 @@ private final class SearchAlbumViewModelAlbumsSection: SearchAlbumViewModelSecti
             items.append(item)
         }
     }
-    
-    func changeResult(searchResult: [SearchResult]) {
-        items.removeAll()
-        for result in searchResult.sorted(by: { $0.collectionName < $1.collectionName }) {
-            let identifier = Config.IDs.Cells.album
-            let item = SearchAlbumViewModelAlbumItem(type: .album, identifier: identifier, value: result)
-            items.append(item)
-        }
-    }
 }
 
+
+protocol SearchAlbumViewModelDelegate: AnyObject {
+    func searchAlbumViewModelDidReceiveNewData(_ viewModel: SearchAlbumViewModel)
+}
 
 // MARK: - SearchAlbumViewModel
 final class SearchAlbumViewModel {
     
-    @Published var sections: [SearchAlbumViewModelSection] = []
+    var sections: [SearchAlbumViewModelSection] = []
+    
+    weak var delegate: SearchAlbumViewModelDelegate?
     
     // Combine
     private var cancellables = Set<AnyCancellable>()
@@ -115,21 +112,16 @@ final class SearchAlbumViewModel {
                     #endif
                 }
             }, receiveValue: { [weak self] answer in
-                
-                for album in answer.results {
-                    print(album.collectionName)
-                }
-                
-                self?.changeAlbums(searchResults: answer.results)
+                guard let self = self else { return }
+                self.changeAlbums(searchResults: answer.results)
+                self.delegate?.searchAlbumViewModelDidReceiveNewData(self)
             })
             .store(in: &cancellables)
     }
     
     func changeAlbums(searchResults: [SearchResult]) {
-        for section in sections {
-            guard let albumsSection = section as? SearchAlbumViewModelAlbumsSection else { continue }
-            albumsSection.changeResult(searchResult: searchResults)
-        }
+        sections.removeAll(where: { $0 is SearchAlbumViewModelAlbumsSection })
+        sections.append(SearchAlbumViewModelAlbumsSection(searchResults: searchResults))
     }
 }
 

@@ -43,6 +43,7 @@ class SearchAlbumViewController: UIViewController {
         setupView()
         setupNavBar()
         setupTableManager()
+        viewModel.delegate = self
     }
 }
 
@@ -51,6 +52,8 @@ private extension SearchAlbumViewController {
     
     private func setupTableManager() {
         tableManager = SearchAlbumTableViewManager(viewModel: viewModel, onAlbumSelect: onAlbumSelect)
+        tableView.delegate = tableManager
+        tableView.dataSource = tableManager
     }
     
     private func setupSearchBarListeners() {
@@ -75,7 +78,7 @@ private extension SearchAlbumViewController {
         
         // tableView
         tableView = UITableView()
-        tableView.backgroundColor = Design.Colors.background
+        tableView.backgroundColor = Design.Colors.tableBackground
         tableView.bounces = true
         view.addSubview(tableView)
         
@@ -90,9 +93,9 @@ private extension SearchAlbumViewController {
         // tableView
         tableView.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide)
+            make.bottom.equalTo(view.safeAreaLayoutGuide)
             make.left.equalTo(view.safeAreaLayoutGuide)
             make.right.equalTo(view.safeAreaLayoutGuide)
-            make.bottom.equalTo(view.safeAreaLayoutGuide)
         }
     }
     
@@ -101,5 +104,12 @@ private extension SearchAlbumViewController {
         navigationItem.searchController = searchController
         searchController.obscuresBackgroundDuringPresentation = false
         setupSearchBarListeners()
+    }
+}
+
+extension SearchAlbumViewController: SearchAlbumViewModelDelegate {
+    
+    func searchAlbumViewModelDidReceiveNewData(_ viewModel: SearchAlbumViewModel) {
+        tableView.reloadData()
     }
 }
