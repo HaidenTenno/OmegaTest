@@ -32,6 +32,9 @@ final class RealmUserRepository: UserRepository {
     func getSingle(email: String, completion: @escaping (Result<User, RepositoryError>) -> Void) {
         let person = realm.object(ofType: User.self, forPrimaryKey: email) // ???
         guard let user = person else {
+            #if DEBUG
+            print("GET SINGLE USER FAIL")
+            #endif
             completion(.failure(.notFound))
             return
         }
@@ -42,6 +45,9 @@ final class RealmUserRepository: UserRepository {
         getSingle(email: email) { result in
             switch result {
             case .failure(let error):
+                #if DEBUG
+                print("SIGN IN FAIL")
+                #endif
                 completion(.failure(error))
             case .success(let user):
                 if user.password == password {
@@ -61,6 +67,9 @@ final class RealmUserRepository: UserRepository {
                 completion(.success(user))
             }
         } catch (let error) {
+            #if DEBUG
+            print("SIGN UP FAIL")
+            #endif
             completion(.failure(RepositoryError.internalError(error)))
         }
     }

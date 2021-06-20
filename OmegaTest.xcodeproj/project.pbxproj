@@ -12,6 +12,9 @@
 		3505A311267F311600996348 /* SearchAlbumViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3505A310267F311600996348 /* SearchAlbumViewModel.swift */; };
 		3505A314267F3F0900996348 /* UserInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3505A313267F3F0900996348 /* UserInfoTableViewCell.swift */; };
 		3505A316267F3F1B00996348 /* AlbumTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3505A315267F3F1B00996348 /* AlbumTableViewCell.swift */; };
+		3505A318267F49E300996348 /* ConfigurableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3505A317267F49E300996348 /* ConfigurableCell.swift */; };
+		3505A31D267F5F6000996348 /* SearchResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3505A31C267F5F6000996348 /* SearchResults.swift */; };
+		3505A31F267F733D00996348 /* SearchRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3505A31E267F733D00996348 /* SearchRepository.swift */; };
 		35C544E6267D13D30068AFA4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 35C544E5267D13D30068AFA4 /* Assets.xcassets */; };
 		35C544E9267D13D30068AFA4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 35C544E7267D13D30068AFA4 /* LaunchScreen.storyboard */; };
 		35C544FA267D15240068AFA4 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C544F2267D15240068AFA4 /* Config.swift */; };
@@ -46,6 +49,9 @@
 		3505A310267F311600996348 /* SearchAlbumViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchAlbumViewModel.swift; sourceTree = "<group>"; };
 		3505A313267F3F0900996348 /* UserInfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoTableViewCell.swift; sourceTree = "<group>"; };
 		3505A315267F3F1B00996348 /* AlbumTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumTableViewCell.swift; sourceTree = "<group>"; };
+		3505A317267F49E300996348 /* ConfigurableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurableCell.swift; sourceTree = "<group>"; };
+		3505A31C267F5F6000996348 /* SearchResults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResults.swift; sourceTree = "<group>"; };
+		3505A31E267F733D00996348 /* SearchRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRepository.swift; sourceTree = "<group>"; };
 		35C544D9267D13D10068AFA4 /* OmegaTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OmegaTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		35C544E5267D13D30068AFA4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		35C544E8267D13D30068AFA4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -107,6 +113,15 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
+		3505A31B267F5F2600996348 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				3505A31C267F5F6000996348 /* SearchResults.swift */,
+				3505A31E267F733D00996348 /* SearchRepository.swift */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
 		35C544D0267D13D10068AFA4 = {
 			isa = PBXGroup;
 			children = (
@@ -139,8 +154,8 @@
 		35C544F0267D15240068AFA4 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				3505A31B267F5F2600996348 /* Search */,
 				35C5451C267E73750068AFA4 /* User */,
-				35C5451D267E737D0068AFA4 /* Album */,
 				35C54521267E74330068AFA4 /* Repository.swift */,
 			);
 			path = Models;
@@ -205,6 +220,7 @@
 				35C54511267DEE4D0068AFA4 /* LoadingIndicatorView.swift */,
 				35C5450F267DE40E0068AFA4 /* UITextFieldPadding.swift */,
 				35C5450C267D39F20068AFA4 /* ElementsDesigner.swift */,
+				3505A317267F49E300996348 /* ConfigurableCell.swift */,
 			);
 			path = "Other Elements";
 			sourceTree = "<group>";
@@ -216,13 +232,6 @@
 				35C54528267E76B40068AFA4 /* UserRepository.swift */,
 			);
 			path = User;
-			sourceTree = "<group>";
-		};
-		35C5451D267E737D0068AFA4 /* Album */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Album;
 			sourceTree = "<group>";
 		};
 		35C54523267E74710068AFA4 /* Networking */ = {
@@ -314,6 +323,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3505A318267F49E300996348 /* ConfigurableCell.swift in Sources */,
 				35C544FD267D15240068AFA4 /* Design.swift in Sources */,
 				35C5450B267D26190068AFA4 /* UITextFieldExtension.swift in Sources */,
 				35C54512267DEE4D0068AFA4 /* LoadingIndicatorView.swift in Sources */,
@@ -324,6 +334,7 @@
 				35C54517267E0A000068AFA4 /* FormValidator.swift in Sources */,
 				35C5450D267D39F20068AFA4 /* ElementsDesigner.swift in Sources */,
 				35C544FE267D15240068AFA4 /* ViewsCoordinator.swift in Sources */,
+				3505A31F267F733D00996348 /* SearchRepository.swift in Sources */,
 				3505A316267F3F1B00996348 /* AlbumTableViewCell.swift in Sources */,
 				35C5451B267E44570068AFA4 /* SignInViewController.swift in Sources */,
 				35C54508267D1F550068AFA4 /* DateCounter.swift in Sources */,
@@ -338,6 +349,7 @@
 				35C54519267E103D0068AFA4 /* ArrayExtension.swift in Sources */,
 				35C544FC267D15240068AFA4 /* SceneDelegate.swift in Sources */,
 				35C54529267E76B40068AFA4 /* UserRepository.swift in Sources */,
+				3505A31D267F5F6000996348 /* SearchResults.swift in Sources */,
 				35C54510267DE40E0068AFA4 /* UITextFieldPadding.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

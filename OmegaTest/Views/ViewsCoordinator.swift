@@ -17,7 +17,8 @@ final class ViewsCoordinator {
     }
     
     func start() {
-        presentSignInScreen()
+//        presentSignInScreen()
+        presentSearchAlbumScreen(userEmail: "haiden_tenno@mail.ru")
     }
 }
 
@@ -57,10 +58,11 @@ private extension ViewsCoordinator {
     
     private func createSearchAlbumVC(userEmail: String) -> SearchAlbumViewController {
         let searchAlbumVC = SearchAlbumViewController(
-            userEmail: userEmail,
-            userRepository: RealmUserRepository(),
-            onAlbumSelect: {
-                
+            viewModel: SearchAlbumViewModel(email: userEmail, userRepository: RealmUserRepository()),
+            onAlbumSelect: { id in
+                #if DEBUG
+                print("ALBUM SELECTED \(id)")
+                #endif
             })
         return searchAlbumVC
     }

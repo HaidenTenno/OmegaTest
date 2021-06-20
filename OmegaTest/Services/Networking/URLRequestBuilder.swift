@@ -37,5 +37,37 @@ extension URLRequestBuilder {
 
 enum CharacterProvider {
     
+    enum Search: URLRequestBuilder {
+        case searchAlbums(name: String)
+        case lookupAlbum(id: Int)
+        
+        var path: String {
+            switch self {
+            case .searchAlbums:
+                return "search"
+            case .lookupAlbum:
+                return "lookup"
+            }
+        }
+        
+        var headers: HTTPHeaders? {
+            return nil
+        }
+        
+        var parameters: Parameters? {
+            switch self {
+            case .searchAlbums(let name):
+                return ["term": name,
+                        "entity": "album"]
+            case .lookupAlbum(let id):
+                return ["id": id,
+                        "entity": "song"]
+            }
+        }
+        
+        var method: HTTPMethod {
+            return .get
+        }
+    }
 }
 

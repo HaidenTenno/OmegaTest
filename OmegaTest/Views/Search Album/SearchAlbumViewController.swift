@@ -6,31 +6,30 @@
 //
 
 import UIKit
+import Combine
 
 class SearchAlbumViewController: UIViewController {
 
     // UI
     private var tableView: UITableView!
     
-    // Private
-//    private var userEmail: String
-    
+    private let searchController = UISearchController(searchResultsController: nil)
+        
     // ViewModel
-    //private var viewModel: SearchAlbumViewModel
+    private var viewModel: SearchAlbumViewModel
     
     // TableManager
-    //private var tableManager: SearchAlbumTableViewManager
-    
-    // Services
-    private let userRepository: UserRepository
+    private var tableManager: SearchAlbumTableViewManager?
+        
+    // Combine
+    private var cancellables = Set<AnyCancellable>()
     
     // Callbacks
-    private let onAlbumSelect: (/*Album*/) -> Void
+    private let onAlbumSelect: (Int) -> Void
     
     // Public
-    init(userEmail: String, userRepository: UserRepository, onAlbumSelect: @escaping () -> Void) {
-//        self.userEmail = userEmail
-        self.userRepository = userRepository
+    init(viewModel: SearchAlbumViewModel, onAlbumSelect: @escaping (Int) -> Void) {
+        self.viewModel = viewModel
         self.onAlbumSelect = onAlbumSelect
         super.init(nibName: nil, bundle: nil)
     }
@@ -42,15 +41,28 @@ class SearchAlbumViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
-        setupUser()
+        setupNavBar()
+        setupTableManager()
     }
 }
 
 // MARK: - Private
 private extension SearchAlbumViewController {
     
-    private func setupUser() {
-        
+    private func setupTableManager() {
+        tableManager = SearchAlbumTableViewManager(viewModel: viewModel, onAlbumSelect: onAlbumSelect)
+    }
+    
+    private func setupSearchBarListeners() {
+        let publisher = NotificationCenter.default.publisher(for: UISearchTextField.textDidChangeNotification, object: searchController.searchBar.searchTextField)
+        publisher.map {($0.object as! UISearchTextField).text }
+            .debounce(for: .milliseconds(500), scheduler: RunLoop.main)
+            .removeDuplicates()
+            .sink { query in
+                print(query ?? "")
+                // Call API TO SEARCH
+            }
+            .store(in: &cancellables)
     }
 }
 
@@ -82,5 +94,12 @@ private extension SearchAlbumViewController {
             make.right.equalTo(view.safeAreaLayoutGuide)
             make.bottom.equalTo(view.safeAreaLayoutGuide)
         }
+    }
+    
+    private func setupNavBar() {
+        navigationItem.title = "Search albums"
+        navigationItem.searchController = searchController
+        searchController.obscuresBackgroundDuringPresentation = false
+        setupSearchBarListeners()
     }
 }
