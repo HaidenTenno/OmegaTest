@@ -34,12 +34,15 @@ final class NetworkServiceImplementation: NetworkService {
         guard let urlRequest = endpoint.urlRequest else {
             return Fail(error: NetworkServiceError.badURL).eraseToAnyPublisher()
         }
-        
+                
         return AF.request(urlRequest)
             .validate()
             .publishDecodable(type: Model.self)
             .value()
             .mapError{ error in
+                #if DEBUG
+                print(error)
+                #endif
                 switch error.responseCode {
                 case .some(401):
                     return .unauthorized

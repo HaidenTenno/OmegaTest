@@ -58,7 +58,7 @@ private extension ViewsCoordinator {
     
     private func createSearchAlbumVC(userEmail: String) -> SearchAlbumViewController {
         let searchAlbumVC = SearchAlbumViewController(
-            viewModel: SearchAlbumViewModel(email: userEmail, userRepository: RealmUserRepository()),
+            viewModel: SearchAlbumViewModel(email: userEmail, userRepository: RealmUserRepository(), searchRepository: ApiSearchRepository(networkService: NetworkServiceImplementation.shared)),
             onAlbumSelect: { id in
                 #if DEBUG
                 print("ALBUM SELECTED \(id)")

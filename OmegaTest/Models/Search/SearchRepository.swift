@@ -9,8 +9,8 @@ import Foundation
 import Combine
 
 protocol SearchRepository: Repository {
-    func searchAlbum(name: String) -> AnyPublisher<SearchResult, RepositoryError>
-    func lookupAlbum(id: Int) -> AnyPublisher<LookupResult, RepositoryError>
+    func searchAlbum(name: String) -> AnyPublisher<SearchResults, RepositoryError>
+    func lookupAlbum(id: Int) -> AnyPublisher<LookupResults, RepositoryError>
 }
 
 final class ApiSearchRepository: SearchRepository {
@@ -21,16 +21,16 @@ final class ApiSearchRepository: SearchRepository {
         self.networkService = networkService
     }
     
-    func searchAlbum(name: String) -> AnyPublisher<SearchResult, RepositoryError> {
-        networkService.load(endpoint: CharacterProvider.Search.searchAlbums(name: name), decodeType: SearchResult.self)
+    func searchAlbum(name: String) -> AnyPublisher<SearchResults, RepositoryError> {
+        networkService.load(endpoint: CharacterProvider.Search.searchAlbums(name: name), decodeType: SearchResults.self)
             .mapError { error in
                 return RepositoryError.internalError(error)
             }
             .eraseToAnyPublisher()
     }
     
-    func lookupAlbum(id: Int) -> AnyPublisher<LookupResult, RepositoryError> {
-        networkService.load(endpoint: CharacterProvider.Search.lookupAlbum(id: id), decodeType: LookupResult.self)
+    func lookupAlbum(id: Int) -> AnyPublisher<LookupResults, RepositoryError> {
+        networkService.load(endpoint: CharacterProvider.Search.lookupAlbum(id: id), decodeType: LookupResults.self)
             .mapError { error in
                 return RepositoryError.internalError(error)
             }

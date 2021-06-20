@@ -55,12 +55,12 @@ private extension SearchAlbumViewController {
     
     private func setupSearchBarListeners() {
         let publisher = NotificationCenter.default.publisher(for: UISearchTextField.textDidChangeNotification, object: searchController.searchBar.searchTextField)
-        publisher.map {($0.object as! UISearchTextField).text }
+        publisher.map {($0.object as! UISearchTextField).text! }
             .debounce(for: .milliseconds(500), scheduler: RunLoop.main)
             .removeDuplicates()
-            .sink { query in
-                print(query ?? "")
-                // Call API TO SEARCH
+            .sink { [weak self] query in
+                // Call api to search
+                self?.viewModel.searchAlbums(query: query)
             }
             .store(in: &cancellables)
     }

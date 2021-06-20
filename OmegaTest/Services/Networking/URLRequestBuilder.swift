@@ -12,6 +12,7 @@ protocol URLRequestBuilder: URLRequestConvertible {
     var baseURL: String { get }
     var path: String { get }
     var headers: HTTPHeaders? { get }
+    var encoding: URLEncoding? { get }
     var parameters: Parameters? { get }
     var method: HTTPMethod { get }
 }
@@ -29,7 +30,8 @@ extension URLRequestBuilder {
         request.httpMethod = method.rawValue
         
         request.allHTTPHeaderFields = headers?.dictionary
-        request = try JSONEncoding.default.encode(request, with: parameters)
+        guard let encoding = encoding else { return request }
+        request = try encoding.encode(request, with: parameters)
         
         return request
     }
@@ -52,6 +54,10 @@ enum CharacterProvider {
         
         var headers: HTTPHeaders? {
             return nil
+        }
+        
+        var encoding: URLEncoding? {
+            return URLEncoding.queryString
         }
         
         var parameters: Parameters? {

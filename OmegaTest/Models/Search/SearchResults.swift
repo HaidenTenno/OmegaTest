@@ -19,7 +19,7 @@ struct SearchResult: Codable {
     let artistName, collectionName: String
     let artworkUrl60, artworkUrl100: String
     let trackCount: Int
-    let releaseDate: Date
+    let releaseDate: String
 
     enum CodingKeys: String, CodingKey {
         case artistID = "artistId"
@@ -41,7 +41,7 @@ struct LookupResult: Codable {
     let artistName: String
     let collectionName: String
     let artworkUrl60, artworkUrl100: String
-    let releaseDate: Date
+    let releaseDate: String
     let trackID: Int?
     let trackName: String?
     let artworkUrl30: String?
