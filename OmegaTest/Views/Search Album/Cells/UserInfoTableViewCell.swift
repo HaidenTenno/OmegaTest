@@ -48,7 +48,7 @@ private extension UserInfoTableViewCell {
     
     private func makeConstraints() {
         // userInfoLabel
-        userInfoLabel.snp.remakeConstraints { make in
+        userInfoLabel.snp.makeConstraints { make in
             make.top.equalTo(contentView).offset(10)
             make.bottom.equalTo(contentView).offset(-10)
             make.left.equalTo(contentView).offset(10)

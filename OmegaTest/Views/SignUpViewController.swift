@@ -25,7 +25,6 @@ final class SignUpViewController: UIViewController {
     
     // Services
     private let userRepository: UserRepository
-    private let dateCounter = DateCounter()
     
     // Callbacks
     private let onSignedUp: () -> Void
@@ -66,7 +65,7 @@ private extension SignUpViewController {
     }
     
     @objc private func dateChanged() {
-        ageTextField.text = String(dateCounter.getYearsFromDate(date: ageDatePicker.date))
+        ageTextField.text = String(DateCounter.getYearsFromDate(date: ageDatePicker.date))
     }
     
     @objc private func onSignUpButtonTouched() {

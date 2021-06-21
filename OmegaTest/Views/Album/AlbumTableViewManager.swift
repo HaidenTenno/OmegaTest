@@ -1,5 +1,5 @@
 //
-//  SearchAlbumTableViewManager.swift
+//  AlbumTableViewManager.swift
 //  OmegaTest
 //
 //  Created by Петр Тартынских  on 20.06.2021.
@@ -7,22 +7,18 @@
 
 import UIKit
 
-final class SearchAlbumTableViewManager: NSObject {
+final class AlbumTableViewManager: NSObject {
     
     // ViewModel
-    private let viewModel: SearchAlbumViewModel
+    private let viewModel: AlbumViewModel
     
-    // Callbacks
-    private let onAlbumSelect: (SearchResult) -> Void
-    
-    init(viewModel: SearchAlbumViewModel, onAlbumSelect: @escaping (SearchResult) -> Void) {
+    init(viewModel: AlbumViewModel) {
         self.viewModel = viewModel
-        self.onAlbumSelect = onAlbumSelect
     }
 }
 
 // MARK: - Table view protocols
-extension SearchAlbumTableViewManager: UITableViewDelegate, UITableViewDataSource {
+extension AlbumTableViewManager: UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return viewModel.sections.count
@@ -44,11 +40,6 @@ extension SearchAlbumTableViewManager: UITableViewDelegate, UITableViewDataSourc
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let item = viewModel.sections[indexPath.section].items[indexPath.row]
-        if let viewModel = item as? SearchAlbumViewModelAlbumItem  {
-            onAlbumSelect(viewModel.value)
-        }
-        
         tableView.deselectRow(at: indexPath, animated: true)
     }
 }

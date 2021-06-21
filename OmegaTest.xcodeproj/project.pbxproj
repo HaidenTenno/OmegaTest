@@ -16,6 +16,11 @@
 		3505A31D267F5F6000996348 /* SearchResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3505A31C267F5F6000996348 /* SearchResults.swift */; };
 		3505A31F267F733D00996348 /* SearchRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3505A31E267F733D00996348 /* SearchRepository.swift */; };
 		3505A321267FC34C00996348 /* UIImageViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3505A320267FC34C00996348 /* UIImageViewExtension.swift */; };
+		3505A323267FD31500996348 /* AlbumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3505A322267FD31500996348 /* AlbumViewController.swift */; };
+		3505A327267FDCD700996348 /* AlbumTableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3505A326267FDCD700996348 /* AlbumTableViewModel.swift */; };
+		3505A329267FDCE900996348 /* AlbumTableViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3505A328267FDCE900996348 /* AlbumTableViewManager.swift */; };
+		3505A32B268068DA00996348 /* AlbumInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3505A32A268068DA00996348 /* AlbumInfoTableViewCell.swift */; };
+		3505A32D268068F100996348 /* TrackTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3505A32C268068F100996348 /* TrackTableViewCell.swift */; };
 		35C544E6267D13D30068AFA4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 35C544E5267D13D30068AFA4 /* Assets.xcassets */; };
 		35C544E9267D13D30068AFA4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 35C544E7267D13D30068AFA4 /* LaunchScreen.storyboard */; };
 		35C544FA267D15240068AFA4 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C544F2267D15240068AFA4 /* Config.swift */; };
@@ -54,6 +59,11 @@
 		3505A31C267F5F6000996348 /* SearchResults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResults.swift; sourceTree = "<group>"; };
 		3505A31E267F733D00996348 /* SearchRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRepository.swift; sourceTree = "<group>"; };
 		3505A320267FC34C00996348 /* UIImageViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageViewExtension.swift; sourceTree = "<group>"; };
+		3505A322267FD31500996348 /* AlbumViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumViewController.swift; sourceTree = "<group>"; };
+		3505A326267FDCD700996348 /* AlbumTableViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumTableViewModel.swift; sourceTree = "<group>"; };
+		3505A328267FDCE900996348 /* AlbumTableViewManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumTableViewManager.swift; sourceTree = "<group>"; };
+		3505A32A268068DA00996348 /* AlbumInfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumInfoTableViewCell.swift; sourceTree = "<group>"; };
+		3505A32C268068F100996348 /* TrackTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackTableViewCell.swift; sourceTree = "<group>"; };
 		35C544D9267D13D10068AFA4 /* OmegaTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OmegaTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		35C544E5267D13D30068AFA4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		35C544E8267D13D30068AFA4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -124,6 +134,26 @@
 			path = Search;
 			sourceTree = "<group>";
 		};
+		3505A324267FDC9C00996348 /* Album */ = {
+			isa = PBXGroup;
+			children = (
+				3505A325267FDCB600996348 /* Cells */,
+				3505A322267FD31500996348 /* AlbumViewController.swift */,
+				3505A328267FDCE900996348 /* AlbumTableViewManager.swift */,
+				3505A326267FDCD700996348 /* AlbumTableViewModel.swift */,
+			);
+			path = Album;
+			sourceTree = "<group>";
+		};
+		3505A325267FDCB600996348 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				3505A32A268068DA00996348 /* AlbumInfoTableViewCell.swift */,
+				3505A32C268068F100996348 /* TrackTableViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		35C544D0267D13D10068AFA4 = {
 			isa = PBXGroup;
 			children = (
@@ -180,6 +210,7 @@
 				35C544F7267D15240068AFA4 /* ViewsCoordinator.swift */,
 				35C5451A267E44570068AFA4 /* SignInViewController.swift */,
 				35C544F8267D15240068AFA4 /* SignUpViewController.swift */,
+				3505A324267FDC9C00996348 /* Album */,
 				3505A30B267F301500996348 /* Search Album */,
 				35C5450E267DE3F80068AFA4 /* Other Elements */,
 			);
@@ -331,12 +362,15 @@
 				35C5450B267D26190068AFA4 /* UITextFieldExtension.swift in Sources */,
 				35C54512267DEE4D0068AFA4 /* LoadingIndicatorView.swift in Sources */,
 				3505A311267F311600996348 /* SearchAlbumViewModel.swift in Sources */,
+				3505A329267FDCE900996348 /* AlbumTableViewManager.swift in Sources */,
 				35C544FA267D15240068AFA4 /* Config.swift in Sources */,
+				3505A323267FD31500996348 /* AlbumViewController.swift in Sources */,
 				35C5451F267E73CB0068AFA4 /* User.swift in Sources */,
 				35C54514267DF1FD0068AFA4 /* PhoneNumberFormatter.swift in Sources */,
 				35C54517267E0A000068AFA4 /* FormValidator.swift in Sources */,
 				35C5450D267D39F20068AFA4 /* ElementsDesigner.swift in Sources */,
 				35C544FE267D15240068AFA4 /* ViewsCoordinator.swift in Sources */,
+				3505A327267FDCD700996348 /* AlbumTableViewModel.swift in Sources */,
 				3505A31F267F733D00996348 /* SearchRepository.swift in Sources */,
 				3505A316267F3F1B00996348 /* AlbumTableViewCell.swift in Sources */,
 				35C5451B267E44570068AFA4 /* SignInViewController.swift in Sources */,
@@ -354,7 +388,9 @@
 				35C544FC267D15240068AFA4 /* SceneDelegate.swift in Sources */,
 				35C54529267E76B40068AFA4 /* UserRepository.swift in Sources */,
 				3505A31D267F5F6000996348 /* SearchResults.swift in Sources */,
+				3505A32D268068F100996348 /* TrackTableViewCell.swift in Sources */,
 				35C54510267DE40E0068AFA4 /* UITextFieldPadding.swift in Sources */,
+				3505A32B268068DA00996348 /* AlbumInfoTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

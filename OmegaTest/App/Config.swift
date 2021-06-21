@@ -14,6 +14,9 @@ enum Config {
             // SearchAlbum
             static let userInfo = "UserInfoCell"
             static let album = "AlbumCell"
+            // Album
+            static let albumInfo = "AlbumInfoCell"
+            static let track = "TrackCell"
         }
     }
 }

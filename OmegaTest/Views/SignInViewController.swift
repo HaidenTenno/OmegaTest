@@ -105,6 +105,7 @@ private extension SignInViewController {
     private func clearFields() {
         emailTextField.text = ""
         passwordTextField.text = ""
+        view.endEditing(true)
     }
 }
 

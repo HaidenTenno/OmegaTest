@@ -25,10 +25,10 @@ class SearchAlbumViewController: UIViewController {
     private var cancellables = Set<AnyCancellable>()
     
     // Callbacks
-    private let onAlbumSelect: (Int) -> Void
+    private let onAlbumSelect: (SearchResult) -> Void
     
     // Public
-    init(viewModel: SearchAlbumViewModel, onAlbumSelect: @escaping (Int) -> Void) {
+    init(viewModel: SearchAlbumViewModel, onAlbumSelect: @escaping (SearchResult) -> Void) {
         self.viewModel = viewModel
         self.onAlbumSelect = onAlbumSelect
         super.init(nibName: nil, bundle: nil)
@@ -102,11 +102,13 @@ private extension SearchAlbumViewController {
     private func setupNavBar() {
         navigationItem.title = "Search albums"
         navigationItem.searchController = searchController
+        navigationItem.hidesSearchBarWhenScrolling = false
         searchController.obscuresBackgroundDuringPresentation = false
         setupSearchBarListeners()
     }
 }
 
+// MARK: - SearchAlbumViewModelDelegate
 extension SearchAlbumViewController: SearchAlbumViewModelDelegate {
     
     func searchAlbumViewModelDidReceiveNewData(_ viewModel: SearchAlbumViewModel) {

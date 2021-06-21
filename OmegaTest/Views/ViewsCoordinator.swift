@@ -17,8 +17,7 @@ final class ViewsCoordinator {
     }
     
     func start() {
-//        presentSignInScreen()
-        presentSearchAlbumScreen(userEmail: "haiden_tenno@mail.ru")
+        presentSignInScreen()
     }
 }
 
@@ -59,12 +58,18 @@ private extension ViewsCoordinator {
     private func createSearchAlbumVC(userEmail: String) -> SearchAlbumViewController {
         let searchAlbumVC = SearchAlbumViewController(
             viewModel: SearchAlbumViewModel(email: userEmail, userRepository: RealmUserRepository(), searchRepository: ApiSearchRepository(networkService: NetworkServiceImplementation.shared)),
-            onAlbumSelect: { id in
+            onAlbumSelect: { [unowned self] searchResult in
                 #if DEBUG
-                print("ALBUM SELECTED \(id)")
+                print("ALBUM SELECTED \(searchResult.collectionID)")
                 #endif
+                presentAlbumViewController(album: searchResult)
             })
         return searchAlbumVC
+    }
+    
+    private func createAlbumViewController(album: SearchResult) -> AlbumViewController {
+        let albumVC = AlbumViewController(viewModel: AlbumViewModel(album: album, searchRepository: ApiSearchRepository(networkService: NetworkServiceImplementation.shared)))
+        return albumVC
     }
     
     // MARK: - Presetners
@@ -81,5 +86,10 @@ private extension ViewsCoordinator {
     private func presentSearchAlbumScreen(userEmail: String) {
         let searchAlbumVC = createSearchAlbumVC(userEmail: userEmail)
         navigationController.pushViewController(searchAlbumVC, animated: true)
+    }
+    
+    private func presentAlbumViewController(album: SearchResult) {
+        let albumVC = createAlbumViewController(album: album)
+        navigationController.pushViewController(albumVC, animated: true)
     }
 }

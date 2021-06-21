@@ -1,21 +1,20 @@
 //
-//  AlbumTableViewCell.swift
+//  AlbumInfoTableViewCell.swift
 //  OmegaTest
 //
-//  Created by Петр Тартынских  on 20.06.2021.
+//  Created by Петр Тартынских  on 21.06.2021.
 //
 
 import UIKit
 
-class AlbumTableViewCell: UITableViewCell {
+class AlbumInfoTableViewCell: UITableViewCell {
 
     // UI
     private var globalStackView: UIStackView!
-    private var logoAndTitleStackView: UIStackView!
     private var logoImageView: UIImageView!
     private var titleLablel: UILabel!
     private var bandLabel: UILabel!
-    private var numberOfTracksLabel: UILabel!
+    private var yearOfReleaseLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -23,22 +22,21 @@ class AlbumTableViewCell: UITableViewCell {
     
     override func prepareForReuse() {
         globalStackView.removeFromSuperview()
-        logoAndTitleStackView.removeFromSuperview()
         logoImageView.removeFromSuperview()
         titleLablel.removeFromSuperview()
         bandLabel.removeFromSuperview()
-        numberOfTracksLabel.removeFromSuperview()
+        yearOfReleaseLabel.removeFromSuperview()
     }
 }
 
 // MARK: - ConfigurableCell
-extension AlbumTableViewCell: ConfigurableCell {
-    
+extension AlbumInfoTableViewCell: ConfigurableCell {
+
     func configure(viewModel: ViewModelItem) {
-        guard let viewModel = viewModel as? SearchAlbumViewModelAlbumItem else { return }
+        guard let viewModel = viewModel as? AlbumViewModelInfoItem else { return }
         
         // self
-        selectionStyle = .default
+        selectionStyle = .none
         backgroundColor = Design.Colors.tableBackground
         
         // globalStackView
@@ -49,20 +47,12 @@ extension AlbumTableViewCell: ConfigurableCell {
         globalStackView.distribution = .fill
         contentView.addSubview(globalStackView)
         
-        // logoAndTitleStackView
-        logoAndTitleStackView = UIStackView()
-        logoAndTitleStackView.alignment = .leading
-        logoAndTitleStackView.axis = .horizontal
-        logoAndTitleStackView.spacing = 10
-        logoAndTitleStackView.distribution = .fill
-        globalStackView.addArrangedSubview(logoAndTitleStackView)
-        
         // logoImageView
         logoImageView = UIImageView()
-        if let url = URL(string: viewModel.value.artworkUrl60) {
+        if let url = URL(string: viewModel.value.artworkUrl100) {
             logoImageView.load(url: url)
         }
-        logoAndTitleStackView.addArrangedSubview(logoImageView)
+        globalStackView.addArrangedSubview(logoImageView)
         
         // titleLablel
         titleLablel = UILabel()
@@ -71,7 +61,7 @@ extension AlbumTableViewCell: ConfigurableCell {
         titleLablel.text = viewModel.value.collectionName
         titleLablel.font = Design.Fonts.RegularText.font
         titleLablel.textColor = Design.Fonts.RegularText.color
-        logoAndTitleStackView.addArrangedSubview(titleLablel)
+        globalStackView.addArrangedSubview(titleLablel)
         
         // bandLabel
         bandLabel = UILabel()
@@ -81,21 +71,22 @@ extension AlbumTableViewCell: ConfigurableCell {
         bandLabel.textColor = Design.Fonts.RegularText.color
         globalStackView.addArrangedSubview(bandLabel)
         
-        // numberOfTracksLabel
-        numberOfTracksLabel = UILabel()
-        numberOfTracksLabel.textAlignment = .left
-        let trackOrTracks = viewModel.value.trackCount > 1 ? "tracks" : "track"
-        numberOfTracksLabel.text = "\(viewModel.value.trackCount) \(trackOrTracks)"
-        numberOfTracksLabel.font = Design.Fonts.RegularText.font
-        numberOfTracksLabel.textColor = Design.Fonts.RegularText.color
-        globalStackView.addArrangedSubview(numberOfTracksLabel)
+        // yearOfReleaseLabel
+        yearOfReleaseLabel = UILabel()
+        yearOfReleaseLabel.textAlignment = .left
+        if let releaseDate = DateCounter.getDateFromString(string: viewModel.value.releaseDate) {
+            yearOfReleaseLabel.text = String(DateCounter.getYearFromDate(date: releaseDate))
+        }
+        yearOfReleaseLabel.font = Design.Fonts.RegularText.font
+        yearOfReleaseLabel.textColor = Design.Fonts.RegularText.color
+        globalStackView.addArrangedSubview(yearOfReleaseLabel)
         
         makeConstraints()
     }
 }
 
 // MARK: - Private
-private extension AlbumTableViewCell {
+private extension AlbumInfoTableViewCell {
     
     private func makeConstraints() {
         // globalStackView
@@ -106,22 +97,16 @@ private extension AlbumTableViewCell {
             make.right.equalTo(contentView).offset(-10)
         }
         
-        // logoAndTitleStackView
-        logoAndTitleStackView.snp.makeConstraints { make in
-            make.left.equalTo(globalStackView)
-            make.right.equalTo(globalStackView)
-        }
-        
         // logoImageView
         logoImageView.snp.makeConstraints { make in
-            make.height.equalTo(60)
+            make.height.equalTo(100)
             make.width.equalTo(logoImageView.snp.height)
         }
         
         // titleLablel
         titleLablel.snp.makeConstraints { make in
-            make.top.equalTo(logoAndTitleStackView)
-            make.bottom.equalTo(logoAndTitleStackView)
+            make.left.equalTo(globalStackView)
+            make.right.equalTo(globalStackView)
         }
         
         // bandLabel
@@ -130,8 +115,8 @@ private extension AlbumTableViewCell {
             make.right.equalTo(globalStackView)
         }
         
-        // numberOfTracksLabel
-        numberOfTracksLabel.snp.makeConstraints { make in
+        // yearOfReleaseLabel
+        yearOfReleaseLabel.snp.makeConstraints { make in
             make.left.equalTo(globalStackView)
             make.right.equalTo(globalStackView)
         }
