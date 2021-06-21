@@ -143,7 +143,7 @@ private extension SignInViewController {
         globalStackView.addArrangedSubview(signInButton)
         
         // dontHaveAnAccountButton
-        dontHaveAnAccountButton = ElementsDesigner.getSmallButton(title: "I have an account")
+        dontHaveAnAccountButton = ElementsDesigner.getSmallButton(title: "I don't have an account")
         dontHaveAnAccountButton.addTarget(self, action: #selector(onDontHaveAnAccountButtonButtonTouched), for: .touchUpInside)
         globalStackView.addArrangedSubview(dontHaveAnAccountButton)
         
